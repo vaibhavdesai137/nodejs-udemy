@@ -1,0 +1,29 @@
+<html>
+    
+    <head>
+        <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+    </head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <body>
+        <h1>Hello</h1>
+        <form method="POST" action="/personUrlEncodedData">
+            Username: <input type="text" name="uname" id="uname" /> 
+            <br/>
+            Password: <input type="text" name="pwd" id="pwd" />
+            <br/>
+            <input type="submit" value="Submit" />
+        </form>
+        
+        <script>
+            $.ajax({
+               type: "POST",
+               url: "/personJsonData",
+               data: JSON.stringify({uname: "foo", pwd: "bar"}),
+               contentType: "application/json",
+               dataType: "json" 
+            });
+        </script>    
+    </body>
+</html>
