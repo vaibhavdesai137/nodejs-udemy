@@ -1,0 +1,33 @@
+<html ng-app="TestApp">
+    
+    <head>
+        <title>The MEAN Stack</title>
+    </head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.js"></script>
+    
+    <body ng-controller="MainController as vm">
+        
+        <ul>
+            <li ng-repeat="person in vm.people">
+                {{ person.name}}
+            </li>
+        </ul>
+        
+        <script>
+            // Don't do this madness in prod code unless needed
+            // Here EJS sets the clientPeople value using templates
+            // So by the time browser sees the response, 
+            // clientPeople is already "[{"name":"John Doe"},{"name":"Jane Doe"},{"name":"Foo Doe"}]"
+            
+            // Node never touched the var "clientPeople" itself
+            // It just saw ejs template and replaced rhe placeholder with the 
+            // right value passed from the route
+            var clientPeople = <%- JSON.stringify(serverPeople); %>;
+        </script>
+        
+        <script src="/assets/js/home.js"></script>
+        
+    </body>
+    
+</html>
